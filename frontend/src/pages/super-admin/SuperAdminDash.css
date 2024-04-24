@@ -1,0 +1,45 @@
+.super-dash-grid {
+  display: grid;
+  grid-template-columns: minmax(20rem, 35rem) minmax(20rem, 35rem);
+  gap: 1rem;
+  margin: auto 2rem;
+  justify-content: center;
+}
+
+.super-dash-item {
+  background-color: #fff;
+  box-shadow: var(--modal-shadow-2);
+  border-radius: 8px;
+  font-size: 1.8rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.super-dash-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+.super-dash-item:hover .super-dash-data {
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 35em) {
+  /* 35em = 560px */
+  .super-dash-grid {
+    grid-template-columns: minmax(20rem, 35rem);
+    margin: 2rem;
+  }
+}
+@media only screen and (max-width: 30em) {
+  /* 30em = 480px */
+  .super-dash-grid {
+    margin: 2rem;
+  }
+}

@@ -1,34 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useSelector } from "react-redux";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import ProtectedRoute from "./components/layouts/ProtectedRoute";
+import SuperAdminDash from "./pages/super-admin/SuperAdminDash";
+import ErrorLayout from "./components/layouts/ErrorLayout";
+import RootLayout from "./components/layouts/RootLayout";
+import Dashboard from "./pages/Dashboard";
+import MainLayout from "./components/layouts/mainLayout";
+import Login from "./pages/Login";
+// import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { user } = useSelector((state) => state.user);
+  console.log(user);
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+  const landingPage =
+    user?.role === "Super Admin"
+      ? {
+          path: "/home",
+          element: (
+            <ProtectedRoute restrictTo={["Super Admin"]}>
+              <SuperAdminDash />
+            </ProtectedRoute>
+          ),
+        }
+      : {
+          path: "/home",
+          element: (
+            <ProtectedRoute restrictFrom={["Super Admin"]}>
+              <Dashboard />
+            </ProtectedRoute>
+          ),
+        };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorLayout />,
+      children: [
+        {
+          index: true,
+          element: <>Landing</>,
+        },
+        {
+          path: "login",
+          element: (
+            <ProtectedRoute reverse>
+              <Login />
+            </ProtectedRoute>
+          ),
+        },
+
+        {
+          path: "",
+          element: <MainLayout />,
+          children: [landingPage], //[landingPage, ...superAdminRoutes(), ...userRoutes()],
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

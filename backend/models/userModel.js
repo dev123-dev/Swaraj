@@ -77,3 +77,55 @@ const userSchema = new mongoose.Schema({
     default: Date.now(),
   },
 });
+
+//* Indexes ********************************************************
+
+userSchema.index({ email: 1, institution: 1 }, { unique: true });
+
+//* Pre Middlewares ************************************************
+
+// Encrypt password
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+
+  this.password = await bcrypt.hash(this.password, 12);
+  this.passwordConfirm = undefined;
+  next();
+});
+
+// Update passwordChangedAt property on password update
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
+
+  // 1sec delay - passwordChangedAt timestamp is always before jwtTimeStamp
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+//* Instance Methods ***********************************************
+
+// Compare password
+userSchema.methods.comparePassword = async function (
+  givenPassword,
+  hashedPassword
+) {
+  return await bcrypt.compare(givenPassword, hashedPassword);
+};
+
+// Check if password was changed after token was issued
+userSchema.methods.changedPasswordAfter = function (jwtTimeStamp) {
+  if (this.passwordChangedAt) {
+    const changedTimeStamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+
+    return changedTimeStamp > jwtTimeStamp;
+  }
+  return false;
+};
+
+//* userModel ******************************************************
+
+const User = mongoose.model("User", userSchema);
+module.exports = User;

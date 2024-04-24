@@ -1,0 +1,36 @@
+.error-page {
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  background-color: #f8f9fb;
+}
+.error-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: var(--modal-shadow-2);
+  border-radius: 8px;
+  padding: 5rem;
+}
+
+.error__title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.error__msg {
+  font-size: 2.2rem;
+  font-weight: 700;
+  max-width: 50rem;
+  margin-bottom: 3rem;
+}
+
+.error-btn {
+  width: 15rem;
+  padding: 2rem !important;
+  margin: 0 auto;
+  font-size: 1.4rem !important;
+}

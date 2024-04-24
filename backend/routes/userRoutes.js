@@ -7,13 +7,13 @@ const refreshAccessToken = require("../controllers/refreshTokenController");
 
 const router = express.Router();
 
-// router.post("/login", userControllers.login);
+router.post("/login", userControllers.login);
 router.get("/refresh", refreshAccessToken);
 // router.patch("/logout", userControllers.logout);
 
 router.use(authMiddlewares.protect); //* Protect *//
 
-// router.route("/me").get(userControllers.getUserId, userControllers.getUserById);
+router.route("/me").get(userControllers.getUserId, userControllers.getUserById);
 
 // router.get("/", userControllers.getAllUsers);
 
