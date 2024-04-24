@@ -1,5 +1,5 @@
-// import MainContainer from "../../components/layouts/MainContainer";
-// import Icon from "../../components/ui/Icon";
+import MainContainer from "../../components/layouts/MainContainer";
+import Icon from "../../components/ui/Icon";
 // import { useGetAllColorsQuery } from "../../redux/apis/colorApi";
 // import { useGetAllInstitutionsQuery } from "../../redux/apis/institutionApi";
 // import { useGetAllReservesQuery } from "../../redux/apis/reservationApi";
@@ -21,44 +21,8 @@ export default function SuperAdminDash() {
   // });
 
   return (
-    <>SuperAdmin</>
-    // <MainContainer pageName="Dashboard">
-    //   <div className="super-dash-grid">
-    //     <div className="super-dash-item">
-    //       <div className="super-dash-data">
-    //         <Icon name="institute" size="5rem" noCursor color="#20262e" />
-    //         Total Institutes : {dataInstitutes?.total}
-    //       </div>
-    //     </div>
-    //     <div className="super-dash-item">
-    //       <div className="super-dash-data">
-    //         <Icon
-    //           name="calender-outline"
-    //           size="5rem"
-    //           noCursor
-    //           color="#20262e"
-    //         />
-    //         Total Reservations : {dataReserves?.total}
-    //       </div>
-    //     </div>
-    //     <div className="super-dash-item">
-    //       <div className="super-dash-data">
-    //         <Icon name="person-outline" size="5rem" noCursor color="#20262e" />
-    //         Total Users : {dataUsers?.total}
-    //       </div>
-    //     </div>
-    //     <div className="super-dash-item">
-    //       <div className="super-dash-data">
-    //         <Icon
-    //           name="color-palette-outline"
-    //           size="5rem"
-    //           noCursor
-    //           color="#20262e"
-    //         />
-    //         Total Colors : {dataColors?.total}
-    //       </div>
-    //     </div>
-    //   </div>
-    // </MainContainer>
+    <MainContainer pageName="Dashboard">
+      <div className="super-dash-grid">Super dashbord</div>
+    </MainContainer>
   );
 }

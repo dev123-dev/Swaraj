@@ -1,0 +1,45 @@
+.sidebar-outer {
+  /* background-color: var(--text-black-color); */
+  background-color: #095a4a;
+  overflow-y: auto;
+  min-width: 29rem;
+  border-radius: 0% 3% 3% 0%;
+}
+
+.sidebar {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem;
+  padding-top: 1rem;
+  min-height: 100vh;
+  color: var(--text-white-color);
+}
+.sidebar-outer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.book-better-logo {
+  height: 5rem;
+}
+
+.btn-home {
+  height: 4rem;
+  width: 4rem;
+
+  border-radius: 8px;
+  border: 1px solid var(--text-white-color);
+}
+
+.horizontal-line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--text-white-color);
+}
+
+@media only screen and (max-width: 62em) {
+  /* 62em = 992px */
+  .sidebar-home-icon {
+    display: none;
+  }
+}
