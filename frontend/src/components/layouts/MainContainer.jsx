@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 import Icon from "../ui/Icon";
 import SettingsModal from "../modals/SettingsModal";
 import useOutsideClick from "../../hooks/useOutsideClick";
@@ -21,14 +21,22 @@ export default function MainContainer({ onGoBack, children, pageName }) {
         onCancel={() => setShowModal(false)}
         showModal={showModal}
       />
-      <div className="top-header text-dark">
-        <div className="w-50 d-flex justify-content-end align-item-end">
-          <div className="mx-2">
-            <h2>Dashbord</h2>
+      <div className="top-header ">
+        <div className=" d-flex justify-content-end align-item-end topBar">
+          <div className="mx-2 ">
+            <Link className="topBarHead" to="">
+              Dashboard
+            </Link>
           </div>
-          <div className="mx-2">pROBETY</div>
-          <div className="mx-2">tENTATS</div>
-          <div className="mx-2">rEPORTS</div>
+          <div className="mx-2 ">
+            <Link className="topBarHead">Property</Link>
+          </div>
+          <div className="mx-2 ">
+            <Link className="topBarHead">Tenants</Link>
+          </div>
+          <div className="mx-2 ">
+            <Link className="topBarHead">Reports</Link>
+          </div>
         </div>
 
         <div className="row-gap-1">
@@ -50,7 +58,7 @@ export default function MainContainer({ onGoBack, children, pageName }) {
             />
           )}
         </div>
-        <div className="row-gap-1 bg-success">
+        <div className="row-gap-1 ">
           <div className="main-container-home-icon">{/* <HomeIcon /> */}</div>
           <div
             className="profile"

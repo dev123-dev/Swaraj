@@ -19,9 +19,13 @@
   height: 0;
 }
 
-.book-better-logo {
-  height: 5rem;
+.swaraj-logo {
+  height: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
 }
+
 
 .btn-home {
   height: 4rem;

@@ -18,7 +18,7 @@ export default function Login() {
     if (error) dispatch(setAlert({ type: "error", msg: error }));
 
     if (data?.status === "SUCCESS") {
-      dispatch(setAlert({ type: "success", msg: `Welcome to Book Better!` }));
+      dispatch(setAlert({ type: "success", msg: `Welcome to Swaraj...!` }));
     }
   }, [error, dispatch, data]);
 
@@ -71,6 +71,7 @@ export default function Login() {
         <div className="flex-center">
           <button
             className="btn-primary_1 btn-black btn-login flex-center"
+            style={{ backgroundColor: "#095A4A" }}
             disabled={isLoading}
           >
             Log in

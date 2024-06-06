@@ -90,3 +90,19 @@
     padding: 1rem;
   }
 }
+/* topbar */
+.topBarHead{
+  color: #095A4A;
+  font-weight:400;
+  font-size: 22px;
+  line-height: 28px;
+  
+}
+.topBarHead:hover,
+.topBarHead:active {
+  color: #095A4A; 
+  font-weight: 600;
+}
+.topBar{
+gap: 40px;
+}

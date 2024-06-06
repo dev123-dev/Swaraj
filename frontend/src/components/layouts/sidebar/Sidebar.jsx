@@ -17,14 +17,10 @@ export default function Sidebar() {
       <div className="sidebar-outer">
         <div className="sidebar">
           <div className="flex-between mb-1">
-            <img
-              className="book-better-logo"
-              src={logo}
-              alt="Book Better Logo"
-            />
+            <img className="swaraj-logo" src={logo} alt="Book Better Logo" />
             <div className="sidebar-home-icon">{/* <HomeIcon /> */}</div>
           </div>
-          <div className="horizontal-line mb-2"></div>
+          {/* <div className="horizontal-line mb-2"></div> */}
           {/* {user?.role !== "Super Admin" ? (
             <Fragment>
               <SidebarMonth />
